@@ -1,9 +1,10 @@
 import { useState } from "react"
-
+import { useRouter } from "next/router"
 
 export default function CreateMemo() {
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
+  const router = useRouter()
   const submit = async () => {
     const data = {title: title, body: body}
     const response = await fetch('/api/saveMemo', {
@@ -13,10 +14,12 @@ export default function CreateMemo() {
         },
       body: JSON.stringify(data),
     });
+    console.log(response)
   
     if (response.ok) {
       const result = await response.json();
       console.log(result.message); // Data saved successfully.
+      router.push("/memoList")
     } else {
       console.log('Error occurred while saving data.'); 
     }

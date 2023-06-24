@@ -1,37 +1,12 @@
-import Layout from '../components/Layout';
-import Link from 'next/link';
-import React from 'react';
+import { useState } from "react"
+import { useRouter } from "next/router"
 
-import axios from 'axios'
-
-const Index = (props) => (
-    <Layout>
-        <p>Hello, Next JS</p>
-        <h2>
-            홈 화면
-        </h2>
-
-        <ul className="list-group">
-            {props.data.map(({show}) => (
-                <li className="list-group-item" key={show.id}>
-                    <Link as={`/p/${show.id}`} href={`/post?title=${show.title}`}>
-                        <a>{show.name}</a>
-                    </Link>
-                </li>
-            ))}
-        </ul>
-    </Layout>
-);
-
-Index.getInitialProps = async function() {
-        const res = await axios.get('https://api.tvmaze.com/search/shows?q=batman')
-        const data = await res.data;
-
-        console.log(`Show data fetched. Count: ${data.length}`);
-
-        return {
-            data: data
-        }
-    };
-
-export default Index
+export default function SignUp() {
+  return (
+    <main>
+      <a href="/signUp">Sign up</a><br/>
+      <a href="/login">Login</a><br/>
+      <a href="/memoList">Memo List</a><br/>
+    </main>
+  )
+}

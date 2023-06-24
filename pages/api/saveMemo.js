@@ -7,18 +7,19 @@ const saveMemo = (obj) => {
   const jsonDataRead = fs.readFileSync(filePath, 'utf-8');
   const data = JSON.parse(jsonDataRead);
 
-  obj.id = data.length ? Math.max(...data.map(x => x.id)) + 1 : 1;
+  obj.id = data.memos.length ? Math.max(...data.memos.map(x => x.id)) + 1 : 1;
   //id를 1씩 증가하여 저장 
   obj.createdAt = new Date().toISOString();
   obj.updatedAt = new Date().toISOString();
   //현재 시간 timestamp를 저장
-  data.push(obj)
+  data.memos.push(obj)
   //entry를 하나 push하여 data.memos를 업데이트 해주고
 
   const jsonData = JSON.stringify(data, null, 2);
   fs.writeFileSync(filePath, jsonData);
   //최종적으로 data.json에 저장!
 };
+
 export default function handler(req, res) {
   if (req.method === 'POST') {
     console.log("hahaha")

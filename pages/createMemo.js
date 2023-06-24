@@ -27,11 +27,11 @@ export default function CreateMemo() {
   
   return (
     <main>
-      <h1>Create Memo</h1>
+      <h1 className="m-5 d-flex justify-content-center">Create Memo</h1>
       <br/>
-      <input placeholder="title" value={title} onChange={e => setTitle(e.target.value)} /><br/>
-      <textarea placeholder="body" value={body} onChange={e => setBody(e.target.value)} /><br/>
-      <button onClick={submit}>Create Memo</button>
+      <input className="form-control" placeholder="title" value={title} onChange={e => setTitle(e.target.value)} /><br/>
+      <textarea className="form-control" placeholder="body" value={body} onChange={e => setBody(e.target.value)} /><br/>
+      <button className="btn btn-primary" onClick={submit}>Create Memo</button>
     </main>
   )
 }

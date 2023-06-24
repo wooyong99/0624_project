@@ -26,11 +26,11 @@ export default function Login() {
   }
   return (
     <main>
-      <h1>Login Page</h1>
+      <h1 class="m-5 d-flex justify-content-center">Login Page</h1>
       <br/>
-      <input placeholder="email" value={email} onChange={ e => setEmail(e.target.value)}/><br/>
-      <input placeholder="password" type="password" value={password} onChange={ e => setPassword(e.target.value)}/><br/>
-      <button onClick={loginCheck}>Login</button>
+      <input className="form-control" placeholder="email" value={email} onChange={ e => setEmail(e.target.value)}/><br/>
+      <input className="form-control" placeholder="password" type="password" value={password} onChange={ e => setPassword(e.target.value)}/><br/>
+      <button onClick={loginCheck} className="btn btn-primary">Login</button>
     </main>
   )
 }

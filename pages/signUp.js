@@ -36,11 +36,11 @@ export default function SignUp() {
   } 
   return (
     <main>
-      <h1>Sign Up Page</h1>
+      <h1 class="m-5 d-flex justify-content-center">Sign Up Page</h1>
       <br/>
-      <input placeholder="email" value={email} onChange={ e => setEmail(e.target.value)}/><br/>
-      <input placeholder="password" type="password" value={password} onChange={ e => setPassword(e.target.value)}/><br/>
-      <button onClick={signUp}>Login</button>
+      <input className="form-control" placeholder="email" value={email} onChange={ e => setEmail(e.target.value)}/><br/>
+      <input className="form-control" placeholder="password" type="password" value={password} onChange={ e => setPassword(e.target.value)}/><br/>
+      <button onClick={signUp} className="btn btn-primary">Login</button>
     </main>
   )
 }

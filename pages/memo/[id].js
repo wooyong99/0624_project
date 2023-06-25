@@ -14,7 +14,7 @@ const Memo = () => {
     const response = await fetch(`/api/getMemo?id=${id}`)
     const jsonResponse = await response.json()
     console.log(jsonResponse)
-    if (jsonResponse.id == true) {
+    if (jsonResponse !== {}) {
       setMemo(jsonResponse)
     }else{
       alert("Not Found Memo "+id)

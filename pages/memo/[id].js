@@ -14,13 +14,16 @@ const Memo = () => {
     const response = await fetch(`/api/getMemo?id=${id}`)
     const jsonResponse = await response.json()
     console.log(jsonResponse)
-    if (jsonResponse !== {}) {
-      setMemo(jsonResponse)
-    }else{
+    if (jsonResponse.error) {
       alert("Not Found Memo "+id)
       router.push("/memoList")
+    }else{
+      setMemo(jsonResponse)
     }
     return response
+  }
+  const modify = () => {
+    router.push("/memo/modify/"+id)
   }
   return (
     <div className='container'>
@@ -47,6 +50,9 @@ const Memo = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className='text-end p-3'>
+        <button className='btn btn-info text-light' onClick={modify}>Modify</button>
       </div>
     </div>
   );

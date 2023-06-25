@@ -18,7 +18,7 @@ const getMemo = (id) => {
       return obj
     }
   }
-  return {}
+  return {error : "true"}
 };
 
 export default function handler(req, res) {

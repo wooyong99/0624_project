@@ -5,7 +5,6 @@ const Memo = () => {
   const router = useRouter();
   const { id } = router.query;
   const [memo, setMemo] = useState({})
-  console.log(id)
   useEffect(() => {
     if (id) {
       getMemo()
@@ -15,8 +14,11 @@ const Memo = () => {
     const response = await fetch(`/api/getMemo?id=${id}`)
     const jsonResponse = await response.json()
     console.log(jsonResponse)
-    if (jsonResponse) {
+    if (jsonResponse.id == true) {
       setMemo(jsonResponse)
+    }else{
+      alert("Not Found Memo "+id)
+      router.push("/memoList")
     }
     return response
   }
@@ -27,21 +29,21 @@ const Memo = () => {
       <div className='card'>
         <div className='card-body'>
           <div className="row">
-            <label for="colFormLabelLg" className="col-sm-2 col-form-label col-form-label-lg">Title</label>
-            <div class="col">
-            <label for="colFormLabelLg" className="col col-form-label col-form-label-lg">{memo.title}</label>
+            <label className="col-sm-2 col-form-label col-form-label-lg">Title</label>
+            <div className="col">
+              <label className="col col-form-label col-form-label-lg">{memo.title}</label>
             </div>
           </div>
           <div className="row">
-            <label for="colFormLabelLg" className="col-sm-2 col-form-label col-form-label-lg">Body</label>
+            <label className="col-sm-2 col-form-label col-form-label-lg">Body</label>
             <div className="col">
-            <label for="colFormLabelLg" className="col col-form-label col-form-label-lg">{memo.body}</label>
+              <label className="col col-form-label col-form-label-lg">{memo.body}</label>
             </div>
           </div>
           <div className="row">
-            <label for="colFormLabelLg" className="col-sm-2 col-form-label col-form-label-lg">CreatedAt</label>
+            <label className="col-sm-2 col-form-label col-form-label-lg">CreatedAt</label>
             <div className="col">
-            <label for="colFormLabelLg" className="col col-form-label col-form-label-lg">{memo.createdAt}</label>
+              <label className="col col-form-label col-form-label-lg">{memo.createdAt}</label>
             </div>
           </div>
         </div>
@@ -50,4 +52,5 @@ const Memo = () => {
   );
 };
 
-export default Memo;
+
+export default Memo

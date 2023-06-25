@@ -6,15 +6,14 @@ const getMemo = (id) => {
 
   const jsonDataRead = fs.readFileSync(filePath, 'utf-8');
   const data = JSON.parse(jsonDataRead);
-  for(const el of data.memos){
-    console.log(el.id)
-    if(el.id == id){
+  for (const el of data.memos) {
+    if (el.id == id) {
       const obj = {
-        id : el.id,
-        title : el.title,
-        body : el.body,
-        createdAt : el.createdAt,
-        updatedAt : el.updatedAt
+        id: el.id,
+        title: el.title,
+        body: el.body,
+        createdAt: el.createdAt,
+        updatedAt: el.updatedAt
       }
       return obj
     }
@@ -23,7 +22,12 @@ const getMemo = (id) => {
 };
 
 export default function handler(req, res) {
-  const id = req.query.id;
-  const rs = getMemo(id);
-  res.status(200).json(rs);
+  if (req.method === 'GET') {
+    const id = req.query.id;
+    const rs = getMemo(id);
+    res.status(200).json(rs);
+  }else{
+    res.status(405).json({ message : "Method not allowed."})
+  }
+
 }
